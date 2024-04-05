@@ -1,0 +1,29 @@
+python3
+
+import requests
+import boto3
+
+s3 = boto3.client('s3', region_name='us-east-1')
+response = s3.list_buckets()
+for r in response['Buckets']:
+  print(r['Name'])
+
+rotating_earth.gif = requests.get('https://upload.wikimedia.org/wikipedia/en/2/2f/Rotating_earth_%28small%29_north_top.gif')
+
+bucket_name = 'ds2002-rpy2ja'
+local_file = 'rotating_earth_(large).gif'
+
+resp = s3.put_object(
+    Body = local_file,
+    Bucket = bucket,
+    Key = local_file)
+
+bucket_name = ‘ds2002-rpy2ja’
+object_name = ‘rotating_earth_(large).gif’
+expires_in = 604800
+
+response = s3.generate_presigned_url(
+    'get_object',
+    Params={'ds2002-rpy2ja': bucket_name, 'rotating_earth_(large).gif': object_name},
+    604800=expires_in
+    )

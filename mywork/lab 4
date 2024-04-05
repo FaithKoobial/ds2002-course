@@ -3,6 +3,6 @@
 curl https://upload.wikimedia.org/wikipedia/commons/8/86/Nicki_Minaj.jpg > nickiminaj.png
 
 aws s3 cp nickiminaj.png s3://ds2002-rpy2ja/
-aws s3 presign --expires in 604800 s3://ds2002-rpy2ja/nickiminaj.png
+aws s3 presign --expires-in 604800 s3://ds2002-rpy2ja/nickiminaj.png
 
 https://ds2002-rpy2ja.s3.us-east-1.amazonaws.com/nickiminaj.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ3EGSR5IL5RONMNJ%2F20240405%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240405T180224Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=d2d409ee1c6ae5b209e75bdfc292b6bb072fbfc7a5ea15f6007596bb5ce953cd

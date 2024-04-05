@@ -1,1 +1,9 @@
+#!/bin/bash
+aws s3 cp "$nickiminaj.png" "s3://$nickiminaj.png/"
+presigned_url=$(aws s3 presign "s3://$nickiminaj.png/$(basename "$nickiminaj.png")" --expires in 604800) 
 
+echo "Presigned URL for the file: $presigned_url"
+
+chmod +x upload_to_s3.sh 
+
+./upload_to_s3.sh

@@ -1,0 +1,48 @@
+# Error handling 
+
+def throw_me_an_error():
+   val1 = 14
+   val2 = 0
+   try:
+       result = val1 / val2
+       return result 
+   except ZeroDivisionError as e:
+       print(f"Error: {type(e) .__name__} - Division by zero error occured.")
+
+throw_me_an_error()
+
+# Error handling "finally' 
+
+def write_data_to_file(data, filename):
+  try:
+    with open(filename, 'w', encoding='utf-8') as file:
+      file.write(data)
+  except FileNotFoundError as e:
+    print(f"Error: File {filename} not found.")
+  except PermissionError as e:
+    print(f"Error: Permission denied to write to {filename}.")
+  finally:
+    if 'file' in locals():  # Check if 'file' variable exists (was opened)
+      file.close()  # Close the file if it was opened
+
+# Example usage
+data = "This is some data to write to the file."
+filename = "my_data.txt"
+write_data_to_file(data, filename)
+
+# the main function of the "finally" block is to perform cleanup actions, such as closing files, releasing network resources, or releasing locks. 
+# In this snippet "finally" checks if the 'file' variable exists in the local scope
+# file.close() within the "finally" block ensures that the file will be closed even if an exception occurs
+
+
+
+# Error handling - imported library 
+
+import json 
+
+data = "{invalid_json_key: 'value'}"
+
+try:
+    json.loads(data)
+except json.JSONDecodeError as e: 
+    print(f"JSON import error: {e}")

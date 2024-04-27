@@ -12,3 +12,4 @@ prettyprint
 dnspython
 pymongo==3.7.2
 chalice
+mysqlclient
